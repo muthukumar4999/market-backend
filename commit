@@ -1,0 +1,13 @@
+#!/usr/bin/expect -f
+set message [lindex $argv 0]
+spawn git add .
+interact
+spawn git commit -m '$message'
+interact
+spawn git push origin master
+expect "Username"
+send "morattu\r"
+expect "Password"
+send "seashore@T1\n"
+interact
+set timeout 30
